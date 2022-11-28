@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/styles/todo.css">
+    <link rel="stylesheet" href="/public/styles/createTask.css">
     <script src="https://kit.fontawesome.com/38d14ddf07.js" crossorigin="anonymous"></script>
     <title>To-do-List</title>
 </head>
@@ -12,21 +12,25 @@
     <header>
         <img id="logo" src="https://img.freepik.com/free-vector/people-making-list-illustration_53876-43029.jpg?w=2000" alt="Todo App" >
         <nav>
-            <a href="#" id="main">Todas as Tarefas</a>
-            <a href="/create">Criar nova tarefa</a>
+            <a href="/todo">Todas as Tarefas</a>
+            <a href="/create" id="main">Criar nova tarefa</a>
             <a href="/allTasks">Tarefas concluidas</a>
         </nav>
     </header>
     <main>
         <section>
-            <h2>List Tasks</h2>
+            <h2>Create New Task</h2>
             <div id="tasks">
-                <ul id="list">
-                    
-                </ul>
+                <div class="title">
+                    <label for="title">Title Of Task:</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div id="btn">
+                    <button type="submit" id="button">Adicionar Tarefa</button>
+                </div>
             </div>
         </section>
     </main>
-    <script src="/public/scripts/todo.js"></script>
+    <script src="/public/scripts/createTask.js"></script>
 </body>
 </html>

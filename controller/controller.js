@@ -1,5 +1,18 @@
 const models = require("../model/db")
 
+function routeTodo(request, response){ 
+    response.render("todo")
+}
+function routeMain(request, response){
+    response.render("index")
+}
+function routeLogin(request, response){
+    response.render("login")
+}
+function routeCreate(request, response){
+    response.render("create")
+}
+
 async function cadUser(request, response){
     try{
         const user = {
@@ -14,7 +27,8 @@ async function cadUser(request, response){
         console.log("deu erro")
     }
 }
-async function findUser(request, response){
+
+async function verifyUserExists(request, response){
     try{
         const email = request.body.email
         const password = request.body.passwd
@@ -31,5 +45,9 @@ async function findUser(request, response){
 }
 module.exports = {
     cadUser,
-    findUser
+    verifyUserExists,
+    routeLogin,
+    routeMain,
+    routeCreate,
+    routeTodo
 }

@@ -3,6 +3,7 @@ const session = require("express-session")
 const routes = require("./routes/routes")
 const app = express()
 
+app.use(session({secret: process.env.SECRET_KEY, resave: true, saveUninitialized: true}))
 app.use("/public", express.static(__dirname + "/public"))
 app.use(express.urlencoded({extended: true}))
 app.engine("html", require("ejs").renderFile)

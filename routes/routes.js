@@ -1,16 +1,19 @@
-const { request, response } = require("express")
 const express = require("express")
 const session = require("express-session")
-const {cadUser, findUser} = require("../controller/controller")
+const controlRouter = require("../controller/controller")
 const router = express.Router()
 
-router.get("/", (request, response)=>{
-    response.render("index")
-})
-router.post("/", cadUser)
-router.get("/login", (request, response)=>{
-    response.render("login")
-})
-router.post("/login", findUser)
+router.route("/")
+    .get(controlRouter.routeMain)
+    .post(controlRouter.cadUser)
+
+router.route("/login")
+    .get(controlRouter.routeLogin)
+    .post(controlRouter.verifyUserExists)
+
+router.get("/create", controlRouter.routeCreate)
+
+router.route("/todo")
+    .get(controlRouter.routeTodo)
 
 module.exports = router
