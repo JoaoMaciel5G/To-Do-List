@@ -1,7 +1,13 @@
 const models = require("../model/db")
+const { v4: uuidv4 } = require('uuid');
 
 function routeTodo(request, response){ 
-    response.render("todo")
+    if(!request.session.name){
+        response.render("index")
+    }else{
+        request.session.id = uuidv4()
+        response.render("todo")
+    }
 }
 function routeMain(request, response){
     response.render("index")
@@ -9,8 +15,12 @@ function routeMain(request, response){
 function routeLogin(request, response){
     response.render("login")
 }
-function routeCreate(request, response){
-    response.render("create")
+function routeCreateTask(request, response){
+    if(!request.session.name){
+        response.render("index")
+    }else{
+        response.render("create")
+    }
 }
 
 async function cadUser(request, response){
@@ -22,6 +32,7 @@ async function cadUser(request, response){
             password: request.body.passwd
         }
         const createUser = await models.create(user)
+        request.session.name = user.first_name
         response.render("todo")
     }catch(error){
         console.log("deu erro")
@@ -48,6 +59,6 @@ module.exports = {
     verifyUserExists,
     routeLogin,
     routeMain,
-    routeCreate,
+    routeCreateTask,
     routeTodo
 }

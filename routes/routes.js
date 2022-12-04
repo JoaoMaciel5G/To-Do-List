@@ -11,7 +11,7 @@ router.route("/login")
     .get(controlRouter.routeLogin)
     .post(controlRouter.verifyUserExists)
 
-router.get("/create", controlRouter.routeCreate)
+router.get("/create", controlRouter.routeCreateTask)
 
 router.route("/todo")
     .get(controlRouter.routeTodo)
